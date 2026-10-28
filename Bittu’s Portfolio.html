@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bittu’s Portfolio | Graphic Designer, 3D Artist, Illustrator</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&family=Pirata+One&display=swap" rel="stylesheet">
+<style>
+:root{--tx:#f3edff;--mut:#c6b8e8;--pn:rgba(20,9,42,.55);--ln:rgba(255,255,255,.2);--ac:#cdb8ff;--ac2:#fff1de;--bt:#cdb8ff;--btx:#1a0b3f;--veil:linear-gradient(90deg,rgba(4,2,10,.6),rgba(4,2,10,.12) 65%,transparent);color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root.lt{--tx:#1c1034;--mut:#51407a;--pn:rgba(255,255,255,.62);--ln:rgba(40,20,80,.22);--ac:#5b2bd6;--ac2:#1c1034;--bt:#2a1560;--btx:#fff;--veil:linear-gradient(90deg,rgba(255,255,255,.55),rgba(255,255,255,.12) 65%,transparent);color-scheme:light}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:80px;background:#07040f}
+body{margin:0;color:var(--tx);font:400 17px/1.65 Outfit,system-ui,sans-serif;overflow-x:hidden;transition:color .6s}
+#sky{position:fixed;inset:0;z-index:-3;background:linear-gradient(#06030f,#1a0933,#45102f)}
+#gl{position:fixed;inset:0;width:100%;height:100%;z-index:-2}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:var(--veil)}
+h1,h2,p,a,label,li,input,textarea,.card,.tool,.chip,.logo,nav{transition:color .6s,background-color .6s,border-color .6s}
+h1,h2{font-family:"Pirata One",Georgia,serif;font-weight:400;margin:0}
+a{color:var(--ac)}
+:focus-visible{outline:2px solid var(--ac);outline-offset:3px}
+nav{position:fixed;top:0;left:0;right:0;z-index:30;display:flex;justify-content:space-between;align-items:center;padding:calc(12px + env(safe-area-inset-top,0px)) clamp(16px,4vw,48px) 12px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:var(--pn);border-bottom:1px solid var(--ln)}
+.logo{font:400 26px "Pirata One",serif;color:var(--tx);text-decoration:none}
+nav div{display:flex;gap:clamp(14px,3vw,34px)}
+nav div a{color:var(--tx);text-decoration:none;font-size:15px;opacity:.8}
+nav div a:hover{opacity:1;color:var(--ac)}
+.prog{position:absolute;left:0;bottom:-1px;height:2px;width:100%;background:var(--ac);transform-origin:0 50%;transform:scaleX(0)}
+section{max-width:1160px;margin:auto;padding:130px clamp(20px,6vw,80px) 30px}
+#top{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding-top:110px}
+h1{font-size:clamp(60px,12vw,160px);line-height:.92;text-shadow:0 4px 40px rgba(0,0,0,.35)}
+h1 .w{display:block;color:var(--ac2)}h1 .w+.w{color:var(--ac)}
+.w i{display:inline-block;font-style:normal;opacity:0;transform:translateY(60px) rotate(8deg);animation:up .9s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:calc(.2s + var(--d))}
+@keyframes up{to{opacity:1;transform:none}}
+.sub{font:600 clamp(19px,2.8vw,30px) Outfit,sans-serif;margin:22px 0 8px;color:var(--ac2)}
+.lead{max-width:44ch;color:var(--mut);margin:0}
+.btns{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap}
+.btn{font:600 16px Outfit,sans-serif;padding:14px 32px;border-radius:99px;background:var(--bt);color:var(--btx);border:1px solid transparent;text-decoration:none;cursor:pointer;transition:transform .25s,background-color .6s,color .6s,border-color .6s,box-shadow .3s}
+.btn:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(150,90,255,.4)}
+.btn.o{background:transparent;color:var(--ac);border-color:var(--ac)}
+.hint{margin-top:26px;font-size:15px;color:var(--mut)}
+.hint button{font:inherit;color:var(--ac);background:none;border:0;border-bottom:1px solid currentColor;padding:0;cursor:pointer}
+h2{font-size:clamp(40px,6vw,72px);margin-bottom:30px;color:var(--ac2)}
+.rv{opacity:0;transform:translateY(26px);transition:opacity .9s,transform .9s,color .6s,background-color .6s,border-color .6s}
+.rv.in{opacity:1;transform:none;transition-delay:calc(var(--i,0)*90ms)}
+.chips{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:26px}
+.chip{font:600 14px Outfit,sans-serif;color:var(--tx);background:var(--pn);border:1px solid var(--ln);border-radius:99px;padding:8px 20px;cursor:pointer;backdrop-filter:blur(8px)}
+.chip[aria-pressed=true]{background:var(--bt);color:var(--btx);border-color:transparent}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
+.card{position:relative;aspect-ratio:4/3;border:1px solid var(--ln);border-radius:18px;overflow:hidden;background:var(--pn);display:flex;align-items:flex-end}
+.card.hide{display:none}
+.card .art{position:absolute;inset:0;transition:transform .6s}
+.card:hover .art{transform:scale(1.08)}
+.card .cap{position:relative;padding:60px 20px 18px;width:100%;background:linear-gradient(transparent,rgba(7,4,15,.88));color:#f3edff}
+.cap h3{margin:0;font:600 19px Outfit,sans-serif}
+.cap span{font-size:13px;color:#cdb8ff}
+.cap p{margin:6px 0 0;font-size:14px;max-height:0;overflow:hidden;opacity:0;transition:max-height .4s,opacity .4s;color:#eadfff}
+.card:hover .cap p,.card:focus-within .cap p{max-height:80px;opacity:1}
+.tools{display:flex;flex-wrap:wrap;gap:16px}
+.tool{position:relative;padding:22px 34px;border:1px solid var(--ln);border-radius:16px;background:var(--pn);backdrop-filter:blur(8px);font:600 21px Outfit,sans-serif;overflow:hidden}
+.tool::after{content:"";position:absolute;left:0;bottom:0;height:3px;width:100%;background:linear-gradient(90deg,#ff3d7a,#b53cff,#3d7bff);transform:scaleX(0);transform-origin:0 50%;transition:transform 1.1s .3s}
+.tool.in::after{transform:none}
+#about p{max-width:58ch;color:var(--mut)}
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+#contact{padding-bottom:100px}
+.mails{display:grid;gap:14px;margin-top:20px}
+.mails a{font:600 clamp(15px,2.2vw,21px) Outfit,sans-serif;word-break:break-all}
+.mails small{display:block;color:var(--mut);font-weight:400;font-size:13px}
+form{display:grid;gap:12px;background:var(--pn);border:1px solid var(--ln);border-radius:20px;padding:24px;backdrop-filter:blur(10px)}
+input,textarea{font:400 16px Outfit,sans-serif;color:var(--tx);background:transparent;border:1px solid var(--ln);border-radius:12px;padding:12px 14px;width:100%;resize:vertical}
+input::placeholder,textarea::placeholder{color:var(--mut)}
+#fs{margin:0;font-size:14px;color:var(--mut)}
+footer{text-align:center;color:var(--mut);padding:10px 20px 40px;font-size:14px}
+.flash{position:fixed;inset:0;z-index:45;background:#e8f0ff;opacity:0;pointer-events:none}
+.flash.on{animation:fl .7s}
+@keyframes fl{0%{opacity:.9}12%{opacity:.1}24%{opacity:.7}100%{opacity:0}}
+@media(max-width:760px){.cg{grid-template-columns:1fr}nav div a:nth-child(2){display:none}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}.w i{opacity:1;transform:none}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div id="sky"></div><canvas id="gl" aria-hidden="true"></canvas><div class="flash" id="fl"></div>
+<nav><a class="logo" href="#top">Bittu’s</a><div><a href="#work">Work</a><a href="#tools">Tools</a><a href="#about">About</a><a href="#contact">Contact</a></div><i class="prog" id="prog"></i></nav>
+
+<section id="top">
+  <h1 aria-label="Bittu’s Portfolio"><span class="w" aria-hidden="true">Bittu’s</span><span class="w" aria-hidden="true">Portfolio</span></h1>
+  <p class="sub">Graphic designer, 3D artist and illustrator.</p>
+  <p class="lead">I draw, design and build worlds in 3D. Every piece starts as a blank canvas and ends as something you can feel.</p>
+  <div class="btns"><a class="btn" href="#work">View work</a><a class="btn o" href="#contact">Get in touch</a></div>
+  <p class="hint">Tap the sword, or <button id="st">call the storm</button>. Scroll to watch the sky change.</p>
+</section>
+
+<section id="work">
+  <h2 class="rv">Selected work</h2>
+  <div class="chips rv" role="group" aria-label="Filter projects"><button class="chip" aria-pressed="true" data-f="all">All</button><button class="chip" aria-pressed="false" data-f="3D Art">3D art</button><button class="chip" aria-pressed="false" data-f="Graphic Design">Graphic design</button><button class="chip" aria-pressed="false" data-f="Illustration">Illustration</button></div>
+  <div class="grid" id="grid"></div>
+</section>
+
+<section id="tools">
+  <h2 class="rv">Tools</h2>
+  <div class="tools"><div class="tool rv" style="--i:0">Blender</div><div class="tool rv" style="--i:1">Photoshop</div><div class="tool rv" style="--i:2">Illustrator</div><div class="tool rv" style="--i:3">After Effects</div><div class="tool rv" style="--i:4">Unreal Engine</div></div>
+</section>
+
+<section id="about">
+  <h2 class="rv">About</h2>
+  <p class="rv">I’m Bittu, a graphic designer, 3D artist and illustrator. I move between flat vector layouts, painted illustration and fully lit 3D scenes, so one project can keep a single look from logo to render.</p>
+  <p class="rv">My work leans toward dramatic light, deep color and quiet, story-driven compositions.</p>
+</section>
+
+<section id="contact">
+  <h2 class="rv">Let’s talk</h2>
+  <div class="cg">
+    <div class="rv">
+      <p style="color:var(--mut);margin:0">Reach me directly, or send a message and it will land in my inbox.</p>
+      <div class="mails">
+        <a href="mailto:MdBittu.32117@stu.pearlacademy.com">MdBittu.32117@stu.pearlacademy.com</a>
+        <a href="mailto:bittuphotography2834@gmail.com">bittuphotography2834@gmail.com</a>
+      </div>
+    </div>
+    <form id="f" class="rv" style="--i:1">
+      <input name="n" placeholder="Your name" aria-label="Your name" required>
+      <input name="e" type="email" placeholder="Your email" aria-label="Your email" required>
+      <textarea name="m" rows="5" placeholder="Your message" aria-label="Your message" required></textarea>
+      <button class="btn" type="submit">Send message</button>
+      <p id="fs" role="status"></p>
+    </form>
+  </div>
+</section>
+<footer>© 2026 Bittu’s Portfolio</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/CopyShader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/LuminosityHighPassShader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/EffectComposer.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/MaskPass.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/RenderPass.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/ShaderPass.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/UnrealBloomPass.js"></script>
+<script>
+const $=s=>document.querySelector(s),root=document.documentElement;
+// ----- content -----
+const WORK=[["Cathedral of Static","3D Art","A gothic nave built, lit and rendered in Blender and Unreal Engine.",["#b3123e","#2a0b4d"]],["Blade of Dawn","3D Art","Hero prop modelled and textured for a fantasy key visual.",["#ffa63d","#3d1b7a"]],["House of Ash","Graphic Design","Identity, packaging and posters for a dark-fashion label.",["#b53cff","#0d0818"]],["Midnight Type","Graphic Design","A display typeface and the poster series that launched it.",["#ff5fa2","#1b0a3d"]],["Night Wanderer","Illustration","A lone figure above a mirror-still lake, painted digitally.",["#e0527f","#5a1b7d"]],["Mira Character Sheet","Illustration","Costume variants and expressions for an original character.",["#3d7bff","#b53cff"]]];
+const grid=$('#grid');
+WORK.forEach((w,i)=>{const c=document.createElement('article');c.className='card rv';c.dataset.c=w[1];c.style.setProperty('--i',i%3);c.tabIndex=0;
+ c.innerHTML=`<div class="art" style="background:radial-gradient(circle at ${30+i*9}% 28%,${w[3][0]},transparent 55%),linear-gradient(transparent 55%,rgba(0,0,0,.4)),linear-gradient(${150+i*20}deg,${w[3][1]},#07040f)"></div><div class="cap"><h3>${w[0]}</h3><span>${w[1]}</span><p>${w[2]}</p></div>`;grid.appendChild(c)});
+document.querySelectorAll('.chip').forEach(b=>b.onclick=()=>{document.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed',x===b));
+ document.querySelectorAll('.card').forEach(c=>c.classList.toggle('hide',b.dataset.f!=='all'&&c.dataset.c!==b.dataset.f))});
+// ----- hero letters + reveal -----
+document.querySelectorAll('h1 .w').forEach(el=>{el.innerHTML=[...el.textContent].map((c,i)=>`<i style="--d:${i*50}ms">${c}</i>`).join('')});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.rv').forEach(e=>io.observe(e));
+// ----- contact: opens the visitor's email app addressed to the 2nd email -----
+$('#f').onsubmit=e=>{e.preventDefault();const d=new FormData(e.target),n=d.get('n'),em=d.get('e'),m=d.get('m');
+ const u='mailto:bittuphotography2834@gmail.com?subject='+encodeURIComponent('Portfolio message from '+n)+'&body='+encodeURIComponent(m+'\n\n'+n+' ('+em+')');
+ window.open(u,'_blank');const s=$('#fs');s.textContent='Opening your email app. ';const a=document.createElement('a');a.href=u;a.target='_blank';a.rel='noopener';a.textContent='Tap here if nothing opened.';s.appendChild(a)};
+// ----- palettes: night, dusk, sunset, daylight -----
+const PAL={top:[0x06030f,0x1a0b3f,0x6a3fb0,0xa9d4ff],mid:[0x1a0933,0x5a1b7d,0xe0527f,0xffe3f2],bot:[0x45102f,0xc2338f,0xffa05a,0xfff4d6],pil:[0x5a566a,0x6a5878,0x9a7a86,0xe2dae0],edg:[0xd02a57,0xb44cff,0xff7a3d,0x7a5cff],flo:[0x4a4658,0x5a4a6a,0x9a7a8a,0xeee6ee],gA:[0xb3123e,0xb53cff,0xffa63d,0xfff2b0],gB:[0x4a1a8c,0x3d7bff,0xff5fa2,0xaee3ff],glo:[0xff2a5a,0xc23cff,0xffa040,0x5b8bff],cld:[0x3a2a5c,0x9a5ac0,0xffc79a,0xffffff],lgt:[0x8fa8ff,0xd08aff,0xffb070,0xfff4e0]};
+const hx=h=>[h>>16&255,h>>8&255,h&255];
+const mix=(st,p)=>{const f=Math.min(.999,p)*(st.length-1),i=f|0,a=hx(st[i]),b=hx(st[i+1]),t=f-i;return a.map((v,k)=>v+(b[k]-v)*t)};
+const css=c=>`rgb(${c.map(Math.round)})`,sm=(a,b,x)=>{x=Math.min(1,Math.max(0,(x-a)/(b-a)));return x*x*(3-2*x)};
+let AC;function thunder(){try{AC=AC||new(window.AudioContext||window.webkitAudioContext)();if(AC.state==='suspended')AC.resume();const n=AC.sampleRate*1.8,b=AC.createBuffer(1,n,AC.sampleRate),d=b.getChannelData(0);for(let i=0;i<n;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/n,2.5);const s=AC.createBufferSource();s.buffer=b;const f=AC.createBiquadFilter();f.type='lowpass';f.frequency.value=380;const g=AC.createGain();g.gain.value=.7;s.connect(f);f.connect(g);g.connect(AC.destination);s.start()}catch(e){}}
+// ----- 3D: gothic nave, sword, thunder -----
+let R;try{R=new THREE.WebGLRenderer({canvas:$('#gl'),antialias:true})}catch(e){R=null}
+let strike=()=>{$('#fl').classList.remove('on');void $('#fl').offsetWidth;$('#fl').classList.add('on')};
+let S,C,sw,inner,hit,portrait=false,tx=0,ty=0,mx=0,my=0,boost=0,sc=0,kickT=0,ringT=0,armed=false,lt=false;
+const bolts=[];
+if(R){
+S=new THREE.Scene();S.fog=new THREE.FogExp2(0x1a0933,.014);C=new THREE.PerspectiveCamera(60,1,.1,500);
+const PR=Math.min(devicePixelRatio,1.5);R.setPixelRatio(PR);R.shadowMap.enabled=true;R.shadowMap.type=THREE.PCFSoftShadowMap;
+let comp=null,bloom,fin;const envM=[];
+const set=(o,c)=>o.setRGB(c[0]/255,c[1]/255,c[2]/255),v3=(u,c)=>u.value.set(c[0]/255,c[1]/255,c[2]/255),lin=o=>new THREE.LineBasicMaterial(o||{});
+const std=o=>{const m=new THREE.MeshStandardMaterial(o);envM.push(m);return m};
+const cvs=(w,h,fn)=>{const c=document.createElement('canvas');c.width=w;c.height=h;fn(c.getContext('2d'),w,h);return c};
+const tex=(c,rx,ry)=>{const t=new THREE.CanvasTexture(c);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(rx,ry);t.anisotropy=8;return t};
+const glowTex=st=>{const c=cvs(128,128,(x)=>{const g=x.createRadialGradient(64,64,0,64,64,64);st.forEach(q=>g.addColorStop(q[0],q[1]));x.fillStyle=g;x.fillRect(0,0,128,128)});return new THREE.CanvasTexture(c)};
+// procedural stone + marble
+const stoneC=cvs(512,512,(x,w,h)=>{x.fillStyle='#bdbdc4';x.fillRect(0,0,w,h);for(let i=0;i<9000;i++){const v=Math.random()<.5?0:255;x.fillStyle=`rgba(${v},${v},${v},${Math.random()*.12})`;x.fillRect(Math.random()*w,Math.random()*h,1+Math.random()*3,1+Math.random()*3)}
+ x.strokeStyle='rgba(0,0,0,.45)';x.lineWidth=3;for(let r=0;r<4;r++){const y=r*128;x.beginPath();x.moveTo(0,y);x.lineTo(w,y);x.stroke();for(let k=0;k<2;k++){const o=(r%2?0:128)+k*256;x.beginPath();x.moveTo(o,y);x.lineTo(o,y+128);x.stroke()}}});
+const floC=cvs(512,512,(x,w,h)=>{x.fillStyle='#c8c8d0';x.fillRect(0,0,w,h);x.strokeStyle='rgba(60,60,80,.14)';for(let i=0;i<40;i++){x.lineWidth=Math.random()*2;x.beginPath();x.moveTo(Math.random()*w,0);x.bezierCurveTo(Math.random()*w,h*.3,Math.random()*w,h*.6,Math.random()*w,h);x.stroke()}x.strokeStyle='rgba(0,0,0,.6)';x.lineWidth=6;x.strokeRect(0,0,w,h)});
+const sT=tex(stoneC,1,2),wT=tex(stoneC,40,6);
+const pilM=std({color:0x777777,map:sT,bumpMap:sT,bumpScale:3,roughness:.85,metalness:.05}),wallM=std({map:wT,bumpMap:wT,bumpScale:3,roughness:.9,side:THREE.DoubleSide}),farM=std({map:tex(stoneC,13,8),roughness:.9}),floM=std({map:tex(floC,4,43),roughness:.22,metalness:.15});
+const bas=()=>new THREE.MeshBasicMaterial({side:THREE.DoubleSide}),gAM=bas(),gBM=bas();
+const add=(g,m,x,y,z,r)=>{const o=new THREE.Mesh(g,m);o.position.set(x,y,z);if(r)o.rotation.y=r;o.castShadow=m===pilM;o.receiveShadow=m===pilM||m===wallM||m===floM;S.add(o);return o};
+// image-based lighting from a painted dusk panorama
+{const e=cvs(512,256,(x,w,h)=>{const g=x.createLinearGradient(0,0,0,h);g.addColorStop(0,'#26325c');g.addColorStop(.45,'#7a5a8a');g.addColorStop(.5,'#ffcf9a');g.addColorStop(.58,'#2a2036');g.addColorStop(1,'#0c0a14');x.fillStyle=g;x.fillRect(0,0,w,h);x.fillStyle='#fff3d8';[[60,70],[200,60],[330,80],[450,66]].forEach(q=>x.fillRect(q[0],q[1],34,60));x.fillStyle='#fff';x.beginPath();x.arc(150,40,14,0,6.3);x.fill()});
+ const pm=new THREE.PMREMGenerator(R);S.environment=pm.fromEquirectangular(new THREE.CanvasTexture(e)).texture;pm.dispose()}
+// sky dome: gradient, fbm clouds, stars, moon
+const skyU={cT:{value:new THREE.Vector3()},cM:{value:new THREE.Vector3()},cB:{value:new THREE.Vector3()},cL:{value:new THREE.Vector3()},t:{value:0},sn:{value:0},mo:{value:1},md:{value:new THREE.Vector3(-.3,.41,-.86)}};
+const dome=new THREE.Mesh(new THREE.SphereGeometry(300,32,16),new THREE.ShaderMaterial({uniforms:skyU,side:THREE.BackSide,depthWrite:false,vertexShader:'varying vec3 vD;void main(){vD=position;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',
+fragmentShader:`varying vec3 vD;uniform vec3 cT,cM,cB,cL,md;uniform float t,sn,mo;
+float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
+float n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),f.x),f.y);}
+float fb(vec2 p){float a=.5,s=0.;for(int i=0;i<5;i++){s+=a*n(p);p*=2.03;a*=.5;}return s;}
+void main(){vec3 d=normalize(vD);float y=d.y;vec3 c=mix(cB,cM,smoothstep(-.05,.35,y));c=mix(c,cT,smoothstep(.3,.9,y));
+vec2 sp=d.xz/(abs(y)+.4)*60.;c+=vec3(step(.985,h(floor(sp)))*smoothstep(.1,.5,y)*(1.-sn)*h(floor(sp)+3.));
+float m=dot(d,normalize(md));c+=vec3(1.,.72,.4)*smoothstep(.9985,.9992,m)*mo*1.4+vec3(1.,.55,.25)*pow(max(m,0.),60.)*.45*mo;
+vec2 cp=d.xz/(y+.35)*1.6+vec2(t*.01,0.);float cl=smoothstep(.45,.85,fb(cp))*smoothstep(0.,.2,y);c=mix(c,mix(cL*.55,cL,fb(cp*1.7+3.)),cl*.65);gl_FragColor=vec4(c,1.);}`}));
+dome.renderOrder=-1;dome.frustumCulled=false;S.add(dome);
+// gothic nave: stone pillars, rib vaults, windows, rose window
+const pg=new THREE.BoxGeometry(1.2,16,1.2),cg=new THREE.BoxGeometry(1.9,.55,1.9);
+const ap=[];for(let a=Math.PI;a>=Math.PI*2/3-.001;a-=.05)ap.push(new THREE.Vector3(6+12*Math.cos(a),13+12*Math.sin(a),0));
+const rg=new THREE.TubeGeometry(new THREE.CatmullRomCurve3(ap.concat(ap.slice(0,-1).reverse().map(v=>new THREE.Vector3(-v.x,v.y,0)))),64,.3,8);
+for(let i=0;i<16;i++){const z=14-i*7;[-6,6].forEach(x=>{add(pg,pilM,x,5,z);add(cg,pilM,x,13,z)});add(rg,pilM,0,0,z)}
+[-6,6].forEach(x=>add(new THREE.BoxGeometry(.5,.5,125),pilM,x,13,-40));add(new THREE.BoxGeometry(.5,.5,125),pilM,0,23.4,-40);
+const ws=new THREE.Shape();ws.moveTo(-1.5,0);ws.lineTo(-1.5,6);ws.bezierCurveTo(-1.5,7.5,-.6,8.4,0,9.2);ws.bezierCurveTo(.6,8.4,1.5,7.5,1.5,6);ws.lineTo(1.5,0);const wg=new THREE.ShapeGeometry(ws);
+[-1,1].forEach(sd=>{add(new THREE.PlaneGeometry(240,26),wallM,sd*11.4,10,-50,-sd*Math.PI/2);for(let i=0;i<15;i++)add(wg,i%2?gAM:gBM,sd*11.2,-1,10.5-i*7,-sd*Math.PI/2)});
+add(new THREE.PlaneGeometry(80,34),farM,0,8,-101);add(new THREE.CircleGeometry(7,48),gAM,0,12,-100.5);add(new THREE.TorusGeometry(7,.25,8,48),pilM,0,12,-100.3);add(new THREE.TorusGeometry(3.5,.15,8,40),pilM,0,12,-100.3);
+for(let i=0;i<6;i++)add(new THREE.BoxGeometry(.18,14,.2),pilM,0,12,-100.3).rotation.z=i*Math.PI/6;
+add(new THREE.PlaneGeometry(24,260),floM,0,-3,-60).rotation.x=-Math.PI/2;
+// altar
+const AZ=-31;add(new THREE.BoxGeometry(5.6,.5,5.6),pilM,0,-2.75,AZ);add(new THREE.BoxGeometry(4,1.8,4),pilM,0,-2.1,AZ);
+const rays=add(new THREE.CylinderGeometry(1.2,3.4,18,24,1,true),new THREE.MeshBasicMaterial({color:0xffe9b0,transparent:true,opacity:0,blending:THREE.AdditiveBlending,side:THREE.DoubleSide,depthWrite:false,fog:false}),0,6,AZ);
+const ring=add(new THREE.RingGeometry(.4,.55,64),new THREE.MeshBasicMaterial({color:0xfff2c0,transparent:true,opacity:0,blending:THREE.AdditiveBlending,fog:false,depthWrite:false}),0,-1.15,AZ);ring.rotation.x=-Math.PI/2;
+// volumetric light shafts, torches, dust
+const shT=new THREE.CanvasTexture(cvs(64,256,(x,w,h)=>{let g=x.createLinearGradient(0,0,0,h);g.addColorStop(0,'rgba(255,255,255,0)');g.addColorStop(.25,'rgba(255,255,255,1)');g.addColorStop(1,'rgba(255,255,255,0)');x.fillStyle=g;x.fillRect(0,0,w,h);x.globalCompositeOperation='destination-in';g=x.createLinearGradient(0,0,w,0);g.addColorStop(0,'rgba(0,0,0,0)');g.addColorStop(.5,'rgba(0,0,0,1)');g.addColorStop(1,'rgba(0,0,0,0)');x.fillStyle=g;x.fillRect(0,0,w,h)}));
+const shM=new THREE.MeshBasicMaterial({map:shT,transparent:true,opacity:.2,blending:THREE.AdditiveBlending,depthWrite:false,side:THREE.DoubleSide}),shG=new THREE.PlaneGeometry(2.6,18);
+for(let i=0;i<15;i++)[-1,1].forEach(sd=>{const g=new THREE.Group();g.position.set(sd*7.6,3.5,10.5-i*7);g.rotation.z=sd*.6;[0,Math.PI/2].forEach(r=>{const m=new THREE.Mesh(shG,shM);m.rotation.y=r;g.add(m)});S.add(g)});
+const fM=new THREE.SpriteMaterial({map:glowTex([[0,'rgba(255,240,200,1)'],[.25,'rgba(255,170,70,.7)'],[1,'rgba(255,100,20,0)']]),blending:THREE.AdditiveBlending,depthWrite:false,transparent:true}),flames=[],sgG=new THREE.CylinderGeometry(.14,.08,.55,8),sgM=std({color:0x1a1418,metalness:.8,roughness:.4});
+for(let i=0;i<16;i++)[-5.25,5.25].forEach(x=>{const z=14-i*7,m=new THREE.Mesh(sgG,sgM);m.position.set(x,3.6,z);S.add(m);const fl=new THREE.Sprite(fM);fl.position.set(x,4.2,z);fl.scale.set(1.8,2.4,1);S.add(fl);flames.push(fl)});
+const tl=[0,1,2,3].map(()=>{const l=new THREE.PointLight(0xff9a4a,1.5,22);S.add(l);return l});
+const dN=350,dp=new Float32Array(dN*3);for(let i=0;i<dN;i++){dp[i*3]=(Math.random()-.5)*20;dp[i*3+1]=Math.random()*16-2;dp[i*3+2]=-Math.random()*40}
+const dg=new THREE.BufferGeometry();dg.setAttribute('position',new THREE.BufferAttribute(dp,3));
+const dust=new THREE.Points(dg,new THREE.PointsMaterial({color:0xffe0b0,size:2.2,sizeAttenuation:false,transparent:true,opacity:.55,depthWrite:false}));S.add(dust);
+// lights
+const hemi=new THREE.HemisphereLight(0x8877cc,0x221a30,.6);S.add(hemi);
+const moonL=new THREE.DirectionalLight(0x8fa8ff,1);moonL.castShadow=true;{const q=moonL.shadow,k=q.camera,r=innerWidth<800?1024:2048;q.mapSize.set(r,r);k.left=k.bottom=-34;k.right=k.top=34;k.near=1;k.far=140;k.updateProjectionMatrix();q.bias=-.0004;q.normalBias=.05}S.add(moonL,moonL.target);
+const dl=new THREE.DirectionalLight(0xbfc8ff,.5);dl.position.set(3,6,8);S.add(dl);
+const sl=new THREE.PointLight(0xff3366,1.6,22),fL=new THREE.PointLight(0xaad4ff,0,40);S.add(sl,fL);
+// the sword: spiked wing-blade, braided spine, bronze diamond guard, blue gem, talon crown, segmented grip
+sw=new THREE.Group();inner=new THREE.Group();sw.add(inner);S.add(sw);
+const steelM=std({color:0xd3dae6,metalness:1,roughness:.26}),darkM=std({color:0x15131b,metalness:.75,roughness:.38}),goldM=std({color:0xc9a24b,metalness:1,roughness:.3}),bronzeM=std({color:0x6e4b2b,metalness:.85,roughness:.45}),talA=std({color:0x15131b,metalness:.75,roughness:.35,side:THREE.DoubleSide}),talB=std({color:0x9a7a2e,metalness:.9,roughness:.35,side:THREE.DoubleSide}),blueM=new THREE.MeshStandardMaterial({color:0x1d8fff,emissive:0x1580ff,emissiveIntensity:1.2,metalness:.2,roughness:.1});
+const mk=(g,m,x,y,z)=>{const o=new THREE.Mesh(g,m);o.position.set(x,y,z||0);o.castShadow=true;inner.add(o);return o};
+const RT=[[.26,.15],[.5,.32],[.64,.55],[.5,.9],[.36,1.25],[.3,1.55],[.3,1.7],[.3,2.5],[.46,2.62],[.27,2.78],[.26,3.4],[.25,3.9],[.42,4.12],[.22,4.28],[.2,4.5],[.13,4.85],[.07,5]];
+const LF=[[.26,.15],[.5,.32],[.64,.55],[.5,.9],[.36,1.25],[.3,1.55],[.46,1.95],[.3,2.12],[.27,2.9],[.26,3.4],[.25,3.62],[.4,3.82],[.22,3.98],[.2,4.5],[.13,4.85],[.07,5]];
+const bs=new THREE.Shape();bs.moveTo(0,0);RT.forEach(q=>bs.lineTo(q[0],q[1]));bs.lineTo(0,4.9);LF.slice().reverse().forEach(q=>bs.lineTo(-q[0],q[1]));bs.closePath();
+const bg=new THREE.ExtrudeGeometry(bs,{depth:.07,bevelEnabled:true,bevelSize:.025,bevelThickness:.025,bevelSegments:1});bg.translate(0,0,-.035);mk(bg,steelM,0,0,0);
+const spT=new THREE.CanvasTexture(cvs(128,1024,(x)=>{x.fillStyle='#0d0c12';x.fillRect(0,0,128,1024);x.strokeStyle='#e9dcc0';x.lineWidth=14;x.lineCap='round';for(let y=0;y<1024;y+=96){x.beginPath();x.moveTo(14,y);x.lineTo(114,y+96);x.moveTo(114,y);x.lineTo(14,y+96);x.stroke();x.fillStyle='#2a3a4a';x.beginPath();x.moveTo(64,y+30);x.lineTo(80,y+48);x.lineTo(64,y+66);x.lineTo(48,y+48);x.fill()}}));
+const spM=std({map:spT,metalness:.6,roughness:.4}),spG=new THREE.PlaneGeometry(.36,3.7);mk(spG,spM,0,2.5,.075);mk(spG,spM,0,2.5,-.075).rotation.y=Math.PI;
+const ar=new THREE.Shape();ar.moveTo(0,4.72);ar.lineTo(.12,4.2);ar.lineTo(0,4);ar.lineTo(-.12,4.2);ar.closePath();const arG=new THREE.ShapeGeometry(ar);mk(arG,darkM,0,0,.076);mk(arG,darkM,0,0,-.076).rotation.y=Math.PI;
+mk(new THREE.BoxGeometry(1,1,.22),goldM,0,0,0).rotation.z=Math.PI/4;mk(new THREE.BoxGeometry(.8,.8,.26),bronzeM,0,0,0).rotation.z=Math.PI/4;
+const cs=new THREE.Shape();[[0,-.85],[.2,-.5],[.2,.6],[0,.95],[-.2,.6],[-.2,-.5]].forEach((q,i)=>i?cs.lineTo(q[0],q[1]):cs.moveTo(q[0],q[1]));cs.closePath();
+const cgm=new THREE.ExtrudeGeometry(cs,{depth:.3,bevelEnabled:true,bevelSize:.04,bevelThickness:.04,bevelSegments:2});cgm.translate(0,0,-.15);mk(cgm,steelM,0,.05,0);
+[1,-1].forEach(sg=>{mk(new THREE.SphereGeometry(.16,24,16),blueM,0,.15,sg*.21).scale.set(.75,1.5,.45);[[-.11,.5],[.11,.5],[-.11,-.25],[.11,-.25]].forEach(q=>mk(new THREE.SphereGeometry(.045,10,8),blueM,q[0],q[1],sg*.2))});
+const tal=new THREE.Shape();tal.moveTo(0,-.07);tal.quadraticCurveTo(.7,-.05,1,.35);tal.quadraticCurveTo(1.15,.6,1.12,.95);tal.quadraticCurveTo(.98,.55,.72,.28);tal.quadraticCurveTo(.4,.08,0,.08);tal.closePath();
+const tg=new THREE.ExtrudeGeometry(tal,{depth:.07,bevelEnabled:true,bevelSize:.02,bevelThickness:.02,bevelSegments:1});tg.translate(0,0,-.035);
+for(let i=0;i<9;i++){const m=new THREE.Mesh(tg,i%2?talA:talB),k=.85+((i*37)%10)/40;m.scale.set(k,i<4?-k:k,1);m.rotation.z=-Math.PI/2+(i-4)*.31;m.position.set(0,-.25,(i%3-1)*.025);m.castShadow=true;inner.add(m)}
+[0,1,2].forEach(i=>mk(new THREE.CylinderGeometry(.095,.095,.34,14),darkM,0,-.64-i*.42,0));
+[0,1,2,3].forEach(i=>mk(new THREE.TorusGeometry(.1,.028,8,16),steelM,0,-.45-i*.42,0).rotation.x=Math.PI/2);mk(new THREE.SphereGeometry(.2,20,14),goldM,0,-1.92,0);
+const orb=new THREE.Mesh(new THREE.TorusGeometry(3.2,.014,6,120),new THREE.MeshBasicMaterial({color:0x8fd0ff}));orb.position.y=1.5;orb.rotation.x=1.2;sw.add(orb);
+hit=new THREE.Mesh(new THREE.CylinderGeometry(.9,.9,7.4,8),new THREE.MeshBasicMaterial({visible:false}));hit.position.y=1.5;sw.add(hit);
+// cinematic post-processing: bloom, chromatic edge, vignette, film grain
+const FIN={uniforms:{tDiffuse:{value:null},t:{value:0},boost:{value:0}},vertexShader:'varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',
+fragmentShader:`uniform sampler2D tDiffuse;uniform float t,boost;varying vec2 vUv;float h(vec2 p){return fract(sin(dot(p,vec2(12.9898,78.233)))*43758.5453);}
+void main(){vec2 d=vUv-.5;float r=dot(d,d);vec2 o=d*r*.012*(1.+boost*4.);vec3 c=vec3(texture2D(tDiffuse,vUv+o).r,texture2D(tDiffuse,vUv).g,texture2D(tDiffuse,vUv-o).b);
+c*=1.-r*1.1;c=mix(c,c*c*(3.-2.*c),.3);c+=(h(vUv*1000.+t)-.5)*.045;gl_FragColor=vec4(c,1.);}`};
+try{let rt;try{if(R.capabilities.isWebGL2)rt=new THREE.WebGLMultisampleRenderTarget(innerWidth,innerHeight)}catch(e){}
+ comp=new THREE.EffectComposer(R,rt);comp.setPixelRatio(PR);comp.addPass(new THREE.RenderPass(S,C));bloom=new THREE.UnrealBloomPass(new THREE.Vector2(innerWidth,innerHeight),.5,.7,.85);comp.addPass(bloom);fin=new THREE.ShaderPass(FIN);comp.addPass(fin)}catch(e){comp=null}
+// thunder
+function bolt(a,b,d,o){if(d<.14){o.push(a,b);return}const m=a.clone().add(b).multiplyScalar(.5);m.x+=(Math.random()-.5)*d;m.z+=(Math.random()-.5)*d*.5;bolt(a,m,d/2,o);bolt(m,b,d/2,o);if(Math.random()<.2)bolt(m,m.clone().add(new THREE.Vector3((Math.random()-.5)*4,-Math.random()*3,(Math.random()-.5)*2)),d/2,o)}
+strike=(snd=true)=>{boost=1;if(kickT<=0)kickT=1;ringT=1;$('#fl').classList.remove('on');void $('#fl').offsetWidth;$('#fl').classList.add('on');if(snd)thunder();
+ const t=new THREE.Vector3();sw.getWorldPosition(t);t.y+=sw.rotation.z>1.5?-1:1.2;
+ for(let k=0;k<5;k++){const o=new THREE.Vector3(t.x+(Math.random()-.5)*9,t.y+18,t.z+(Math.random()-.5)*6),pts=[];bolt(o,t,5,pts);
+  const l=new THREE.LineSegments(new THREE.BufferGeometry().setFromPoints(pts),lin({color:k%2?0x8fb8ff:0xffffff,transparent:true,blending:THREE.AdditiveBlending,fog:false,depthTest:false}));S.add(l);bolts.push({l,life:1})}};
+// input
+const rc=new THREE.Raycaster(),nd=new THREE.Vector2(),over=e=>{nd.set(e.clientX/innerWidth*2-1,-(e.clientY/innerHeight)*2+1);rc.setFromCamera(nd,C);return rc.intersectObject(hit).length>0};
+addEventListener('pointermove',e=>{tx=e.clientX/innerWidth-.5;ty=e.clientY/innerHeight-.5;document.body.style.cursor=over(e)?'pointer':''});
+addEventListener('pointerdown',e=>{if(!e.target.closest('a,button,input,textarea,.card,nav')&&over(e))strike()});
+function size(){const w=innerWidth,h=innerHeight;portrait=w/h<1;R.setSize(w,h,false);C.aspect=w/h;C.fov=portrait?74:60;C.updateProjectionMatrix();if(comp)comp.setSize(w,h)}size();addEventListener('resize',size);
+var scene3=()=>{};
+scene3=(p,t,dt)=>{
+ const c=k=>mix(PAL[k],p),camZ=10-30*p,pl=portrait?1:0,dk=a=>a.map(v=>v*.8);
+ set(S.fog.color,c('mid'));set(pilM.color,c('pil'));set(wallM.color,dk(c('pil')));set(farM.color,dk(c('pil')));set(floM.color,c('flo'));set(gAM.color,c('gA'));set(gBM.color,c('gB'));
+ v3(skyU.cT,c('top'));v3(skyU.cM,c('mid'));v3(skyU.cB,c('bot'));v3(skyU.cL,c('cld'));skyU.t.value=t;skyU.sn.value=sm(.15,.55,p);skyU.mo.value=1-sm(.1,.6,p);dome.position.z=camZ;
+ set(moonL.color,c('lgt'));moonL.intensity=1+p*.9+boost*.6;moonL.target.position.set(0,0,camZ-14);moonL.position.set(-21,29,camZ-74);
+ set(hemi.color,c('mid'));set(hemi.groundColor,dk(c('flo')).map(v=>v*.5));hemi.intensity=.5+.5*p;
+ set(shM.color,c('lgt'));shM.opacity=(.22-.12*p)*(1+boost*2);envM.forEach(m=>m.envMapIntensity=.9+p*.5);
+ const nf=1-.7*sm(.5,.85,p);fM.opacity=nf;flames.forEach((f,i)=>f.scale.set(1.8+Math.sin(t*9+i)*.15,2.4+Math.sin(t*7+i*2)*.3,1));
+ [[-5,-5],[5,-5],[-5,-19],[5,-19]].forEach((q,i)=>{tl[i].position.set(q[0],3.8,camZ+q[1]);tl[i].intensity=(1.6+Math.sin(t*11+i*3)*.25)*nf});
+ const da=dg.attributes.position.array;for(let i=0;i<dN;i++)da[i*3+1]+=Math.sin(t*.5+i)*.004;dg.attributes.position.needsUpdate=true;dust.position.z=camZ;dust.material.opacity=.55*(1-p*.5);
+ C.position.set(mx*1.2+(Math.random()-.5)*boost*.4,1.4-my*.6+(Math.random()-.5)*boost*.4,camZ+pl*2);C.lookAt(0,1.6,camZ-12);
+ const f=sm(.55,.82,p),dr=sm(.5,.97,p);
+ sw.position.set((pl?.8:2.4)*(1-sm(.1,.7,p)),.5+3.05*dr+2.4*Math.sin(Math.PI*dr)+Math.sin(t*1.4)*.15*(1-sm(.9,1,p))-pl*1.2*(1-sm(.6,.9,p)),camZ-11);
+ sw.rotation.z=Math.PI*f-.12*(1-sm(.1,.5,p));sw.scale.setScalar(pl?.8:1);
+ kickT=Math.max(0,kickT-dt*.8);inner.rotation.y=t*.35*(1-sm(.5,.8,p))+Math.PI*4*sm(0,.8,p)+(kickT>0?Math.PI*4*(1-kickT*kickT):0);
+ orb.rotation.z=t*.5;boost*=.94;
+ steelM.emissive.setRGB(boost*.5,boost*.65,boost);blueM.emissiveIntensity=1.2+boost*3;
+ sl.position.set(sw.position.x-1.5,sw.position.y+2,sw.position.z+3);set(sl.color,c('glo'));sl.intensity=1.6+boost*3;fL.position.copy(sw.position);fL.intensity=boost*7;
+ rays.material.opacity=.3*sm(.8,1,p)+boost*.15;
+ if(ringT>0){ringT=Math.max(0,ringT-dt*1.1);ring.scale.setScalar(1+(1-ringT)*16);ring.material.opacity=ringT*(p>.9?1:0)}
+ for(let i=bolts.length-1;i>=0;i--){const b=bolts[i];b.life-=dt*2.2;b.l.material.opacity=Math.max(0,b.life)*(.6+.4*Math.random());if(b.life<=0){S.remove(b.l);b.l.geometry.dispose();b.l.material.dispose();bolts.splice(i,1)}}
+ if(p>.965&&!armed){armed=true;strike(false)}if(p<.9)armed=false;
+ if(bloom)bloom.strength=.45*(1-.5*p)+boost*1.6;
+ if(comp){fin.uniforms.t.value=t;fin.uniforms.boost.value=boost;comp.render(dt)}else R.render(S,C)};
+}
+$('#st').onclick=()=>strike();
+// ----- main loop: scroll drives sky, text theme and 3D -----
+let last=performance.now();
+(function frame(now){requestAnimationFrame(frame);const dt=Math.min(.05,(now-last)/1000);last=now;
+ const m=root.scrollHeight-innerHeight;sc+=((m>0?scrollY/m:0)-sc)*.07;mx+=(tx-mx)*.05;my+=(ty-my)*.05;
+ $('#sky').style.background=`linear-gradient(${css(mix(PAL.top,sc))},${css(mix(PAL.mid,sc))} 55%,${css(mix(PAL.bot,sc))})`;
+ const l=sc>.6;if(l!==lt){lt=l;root.classList.toggle('lt',l)}
+ $('#prog').style.transform=`scaleX(${sc})`;
+ if(R)scene3(sc,now/1000,dt)})(last);
+</script>
+</body>
+</html>
